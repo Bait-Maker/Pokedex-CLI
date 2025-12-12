@@ -1,0 +1,29 @@
+{
+  "name": "pokedex-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run",
+    "build": "npx tsc",
+    "start": "node dist/main.js",
+    "dev": "npx tsc && node dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bait-Maker/Pokedex-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bait-Maker/Pokedex-CLI/issues"
+  },
+  "homepage": "https://github.com/Bait-Maker/Pokedex-CLI#readme",
+  "devDependencies": {
+    "@types/node": "^25.0.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
+  }
+}
