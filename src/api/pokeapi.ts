@@ -28,15 +28,66 @@ type Result = {
     url: string;
 }
 
-export type Location = {
-  id: number;
-  name: string;
-  region: string;
-};
-
-type Region = {
-    id: number;
-    locations: Location[];
+type NameAndURL = {
     name: string;
-    names: string [];
+    url: string;
 }
+
+export interface Location {
+  encounter_method_rates: EncounterMethodRate[]
+  game_index: number
+  id: number
+  location: NameAndURL;
+  name: string
+  names: Name[]
+  pokemon_encounters: PokemonEncounter[]
+}
+
+export interface EncounterMethodRate {
+  encounter_method: EncounterMethod
+  version_details: VersionDetail[]
+}
+
+export type EncounterMethod = NameAndURL;
+
+export type VersionDetail = {
+  rate: number
+  version: Version
+}
+
+export type Version = NameAndURL
+
+export type Name = {
+  language: Language
+  name: string
+}
+
+export type Language = {
+  name: string
+  url: string
+}
+
+export type PokemonEncounter = {
+  pokemon: Pokemon
+  version_details: VersionDetail2[]
+}
+
+export type Pokemon = NameAndURL;
+
+export type VersionDetail2 = {
+  encounter_details: EncounterDetail[]
+  max_chance: number
+  version: Version2
+}
+
+export type EncounterDetail = {
+  chance: number
+  condition_values: any[]
+  max_level: number
+  method: Method
+  min_level: number
+}
+
+export type Method = NameAndURL;
+
+export type Version2 = NameAndURL;
