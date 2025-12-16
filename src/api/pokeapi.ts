@@ -25,8 +25,8 @@ type NameAndURL = {
 
 export type ShallowLocations = {
   count: number;
-  next: string | null;
-  previous: string | null;
+  next: string;
+  previous: string;
   results: Result[];
 };
 
