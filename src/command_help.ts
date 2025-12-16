@@ -1,6 +1,6 @@
 import type { CLICommand, State } from "./state.js";
 
-export default function commandHelp(state: State) {
+export default async function commandHelp(state: State) {
     console.log();
     console.log("Welcome to the Pokedex!");
     console.log("Usage:\n");

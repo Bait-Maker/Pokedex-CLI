@@ -1,5 +1,5 @@
 import { cleanInput } from "./repl";
-import { describe, expect, test} from "vitest"
+import { describe, expect, test } from "vitest";
 
 describe.each([
   {
@@ -13,7 +13,7 @@ describe.each([
   {
     input: " Jimbo The GREat",
     expected: ["jimbo", "the", "great"],
-  }
+  },
   // TODO: more test cases here
 ])("cleanInput($input)", ({ input, expected }) => {
   test(`Expected: ${expected}`, () => {
