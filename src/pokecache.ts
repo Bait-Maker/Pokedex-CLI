@@ -13,8 +13,29 @@ export class Cache {
     this.#startReapLoop();
   }
 
+  add<T>(key: string, val: T) {
+    const entry: CacheEntry<T> = {
+      createdAt: Date.now(),
+      val,
+    };
+    this.#cache.set(key, entry);
+  }
+
+  get<T>(key: string) {
+    const entry = this.#cache.get(key);
+    if (entry !== undefined) {
+      return entry.val as T;
+    }
+    return undefined;
+  }
+
+  #startReapLoop() {
+    this.#reapIntervalId = setInterval(() => {
+      this.#reap();
+    }, this.#interval);
+  }
+
   #reap() {
-    // console.log("reap at", Date.now());
     for (const key of this.#cache.keys()) {
       const entry = this.#cache.get(key);
       if (!entry) {
@@ -26,27 +47,8 @@ export class Cache {
     }
   }
 
-  #startReapLoop() {
-    this.#reapIntervalId = setInterval(() => {
-      this.#reap();
-    }, this.#interval);
-  }
-
   stopReapLoop() {
     clearInterval(this.#reapIntervalId);
     this.#reapIntervalId = undefined;
-  }
-
-  add<T>(key: string, val: T) {
-    const entry: CacheEntry<T> = {
-      createdAt: Date.now(),
-      val,
-    };
-    this.#cache.set(key, entry);
-  }
-
-  get<T>(key: string) {
-    const entry = this.#cache.get(key);
-    return entry?.val ?? undefined;
   }
 }
