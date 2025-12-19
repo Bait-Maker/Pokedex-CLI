@@ -15,7 +15,7 @@ export async function commandCatch(
   const res = Math.floor(Math.random() * pokemon.base_experience);
 
   if (res > 40) {
-    console.log(`${pokemon} escaped!`);
+    console.log(`${pokemon.name} escaped!`);
     return;
   }
 

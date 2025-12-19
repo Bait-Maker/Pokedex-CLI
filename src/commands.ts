@@ -4,9 +4,16 @@ import { commandExplore } from "./command_explore.js";
 import { commandMapForward, commandMapBack } from "./map.js";
 import type { CLICommand } from "./state.js";
 import { commandCatch } from "./command_catch.js";
+import { commandInspect } from "./command_inspect.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
+    inspect: {
+      name: "inspect <pokemon_name>",
+      description:
+        "Lists name, height, weight, stats and type(s) of the Pokemon.",
+      callback: commandInspect,
+    },
     catch: {
       name: "catch <pokemon_name>",
       description:
