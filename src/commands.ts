@@ -3,11 +3,18 @@ import commandHelp from "./command_help.js";
 import { commandExplore } from "./command_explore.js";
 import { commandMapForward, commandMapBack } from "./map.js";
 import type { CLICommand } from "./state.js";
+import { commandCatch } from "./command_catch.js";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
+    catch: {
+      name: "catch <pokemon_name>",
+      description:
+        "Throws a pokeball at a Pokemon with percentage chance to catch",
+      callback: commandCatch,
+    },
     explore: {
-      name: "explore",
+      name: "explore <location_name>",
       description: "Lists all Pokemon encounters for the provided area",
       callback: commandExplore,
     },
